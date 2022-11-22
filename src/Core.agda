@@ -1,4 +1,4 @@
-{-# OPTIONS --guardedness  #-}
+{-# OPTIONS --allow-unsolved-metas #-}
 
 module Core where
 
