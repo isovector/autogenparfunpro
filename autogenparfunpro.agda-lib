@@ -1,0 +1,5 @@
+name: autogenparfunpro
+include:
+  src
+depend:
+  standard-library
