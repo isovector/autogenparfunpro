@@ -5,7 +5,6 @@ open import Data.Maybe
 
 -- Functor recursive cases for our algorithm
 data Case (i : Generic) (o : Generic) : Head → Set₁ where
-  V1C : Poly i o V1 → Case i o V
   U1C : Poly i o U1 → Case i o U
   ∘C : ( {l r : Shape}
        → (f : Poly i o l)
@@ -33,8 +32,6 @@ implement
     → (cases : Cases i o)
     → (r : Shape)
     → Poly i o r
-implement cases V1 with cases V
-... | V1C x = x
 implement cases U1 with cases U
 ... | U1C x = x
 implement cases (l :*: r) with cases Times | implement cases l | implement cases r

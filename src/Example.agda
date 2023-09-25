@@ -48,7 +48,6 @@ convert (suc n) with convert n
 build : (s : Shape) → Maybe (Σ ℕ λ n → {A : Set} → interpret s A ↔ Vec A n)
 build V1 = nothing
 build U1 = just ( 0 , proj₂ (convert 0) )
-build (K1 x) = nothing
 build (s :+: s₁) = nothing
 build (l :*: r) with build l | build r
 ... | just (pi , pbij) | just (qi , qbij) = just

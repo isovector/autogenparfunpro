@@ -10,7 +10,6 @@ infixr 6 _:∘:_
 
 -- Reified shape of a data type
 data Shape : Set₁ where
-  V1 : Shape
   U1 : Shape
   _:*:_ : Shape → Shape → Shape
   _:∘:_ : Shape → Shape → Shape
@@ -18,7 +17,6 @@ data Shape : Set₁ where
   -- Rec1 : Shape
 
 interpret : Shape → Set → Set
-interpret V1 v = ⊥
 interpret U1 v = ⊤
 interpret (x :*: y) v = interpret x v × interpret y v
 interpret (x :∘: y) v = interpret x (interpret y v)
@@ -32,12 +30,11 @@ fmap Par1 f x = f x
 
 -- The instance heads we need to give algorithm instances for
 data Head : Set where
-  V K U Plus Times Comp P : Head
+  U Times Comp P : Head
 
 
 -- Get the head of a shape
 caseOf : Shape → Head
-caseOf V1 = V
 caseOf U1 = U
 caseOf (x :*: x₁) = Times
 caseOf (x :∘: x₁) = Comp
